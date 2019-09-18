@@ -39,3 +39,6 @@ dependencies {
     compile 'com.turki-alkhateeb:materialcolorpicker:1.0.7'
 
 }
+dependencies {
+    compile 'com.larswerkman:HoloColorPicker:1.5'
+}

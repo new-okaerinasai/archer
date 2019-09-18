@@ -1,9 +1,14 @@
 package tashariko.com.writetoscreenapp;
 
+import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
+
+import com.turkialkhateeb.materialcolorpicker.ColorChooserDialog;
+import com.turkialkhateeb.materialcolorpicker.ColorListener;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -29,6 +34,9 @@ public class DrawFromFingerActivity extends AppCompatActivity {
 
     @BindView(R.id.undoButton)
     Button undoButton;
+
+    @BindView(R.id.changeColorButton)
+    Button changeColorButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -73,6 +81,14 @@ public class DrawFromFingerActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 customCanvasForDraw.undoView();
+            }
+        });
+
+        changeColorButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(DrawFromFingerActivity.this, CustomColorChoosingDialog.class);
+                startActivity(intent);
             }
         });
     }

@@ -16,8 +16,8 @@ import java.util.ArrayList;
 
 public class CustomDrawView extends android.support.v7.widget.AppCompatImageView {
 
-    private static final int STATE_STILL=0;
-    private static final int STATE_MOVING=1;
+    private static final int STATE_STILL = 0;
+    private static final int STATE_MOVING = 1;
     private static int DEFAULT_COLOR;
 
     private int state = 0;
@@ -40,7 +40,7 @@ public class CustomDrawView extends android.support.v7.widget.AppCompatImageView
     }
 
     private void init() {
-        DEFAULT_COLOR = ContextCompat.getColor(getContext(), R.color.colorAccent);
+        DEFAULT_COLOR = Color.BLACK; //ContextCompat.getColor(getContext(), R.color.colorAccent);
         currentColor = Color.BLACK;
         initPaintNPen(currentColor);
         finalPath = new Path();
@@ -55,8 +55,8 @@ public class CustomDrawView extends android.support.v7.widget.AppCompatImageView
 
     private void initPaintNPen(int color) {
 
-        latestPaint=getNewPaintPen(color);
-        latestPath=getNewPathPen();
+        latestPaint = getNewPaintPen(color);
+        latestPath = getNewPathPen();
 
         paintPenList.add(latestPaint);
         pathPenList.add(latestPath);
@@ -67,7 +67,7 @@ public class CustomDrawView extends android.support.v7.widget.AppCompatImageView
         return path;
     }
 
-    private Paint getNewPaintPen(int color){
+    private Paint getNewPaintPen(int color) {
 
         Paint mPaintPen =new Paint();
 
@@ -113,7 +113,7 @@ public class CustomDrawView extends android.support.v7.widget.AppCompatImageView
     }
 
     private void updatePath(float x, float y) {
-        state=STATE_MOVING;
+        state = STATE_MOVING;
         latestPath.lineTo(x,y);
     }
 
@@ -122,7 +122,7 @@ public class CustomDrawView extends android.support.v7.widget.AppCompatImageView
     }
 
     public void setDrawColor(int color) {
-        currentColor=color;
+        currentColor = color;
     }
 
     @Override
@@ -162,14 +162,13 @@ public class CustomDrawView extends android.support.v7.widget.AppCompatImageView
         finalPath.reset();
         lineWidth = 20;
 
-        initPaintNPen(currentColor);
+        initPaintNPen(Color.BLACK);
 
         invalidate();
     }
 
 
     public void undoPath() {
-
         if (paintPenList.size() > 1) {
             latestPaint = paintPenList.get(paintPenList.size() - 2);
             latestPath = pathPenList.get(pathPenList.size() - 2);
@@ -178,17 +177,14 @@ public class CustomDrawView extends android.support.v7.widget.AppCompatImageView
             pathPenList.remove(pathPenList.size() - 1);
 
             currentColor = latestPaint.getColor();
-            lineWidth= (int) latestPaint.getStrokeWidth();
-
+            lineWidth = (int) latestPaint.getStrokeWidth();
         } else {
             resetView();
         }
-
         invalidate();
     }
 
     float getScore() {
-
         Path intersection = new Path();
         Path union = new Path();
         /*
