@@ -5,9 +5,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 
-import com.turkialkhateeb.materialcolorpicker.ColorChooserDialog;
-import com.turkialkhateeb.materialcolorpicker.ColorListener;
-
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
@@ -25,25 +22,32 @@ public class DrawFromFingerActivity extends AppCompatActivity {
     @BindView(R.id.sizePlusButton)
     Button sizePlusButton;
 
-    @BindView(R.id.colorButton)
-    Button colorButton;
+    @BindView(R.id.finishButton)
+    Button finishButton;
+    //@BindView(R.id.colorButton)
+    //Button colorButton;
 
     @BindView(R.id.undoButton)
-    Button undoButton ;
+    Button undoButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_draw_from_finger);
         ButterKnife.bind(this);
-
-        customCanvasForDraw.setDebugMode(true);
-
         listeners();
-
+        customCanvasForDraw.setDebugMode(true);
     }
 
     private void listeners() {
+        finishButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                System.out.println("llll");
+                customCanvasForDraw.setScore();
+            }
+        });
+
         resetButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -65,24 +69,6 @@ public class DrawFromFingerActivity extends AppCompatActivity {
             }
         });
 
-        colorButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                ColorChooserDialog dialog = new ColorChooserDialog(DrawFromFingerActivity.this);
-                dialog.setTitle("Select Color");
-                dialog.setColorListener(new ColorListener() {
-                    @Override
-                    public void OnColorClick(View v, int color) {
-                        //do whatever you want to with the values
-                        customCanvasForDraw.changeColor(color);
-                    }
-                });
-                //customize the dialog however you want
-                dialog.show();
-            }
-        });
-
         undoButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -92,7 +78,6 @@ public class DrawFromFingerActivity extends AppCompatActivity {
     }
 
     private void resetView() {
-       customCanvasForDraw.resetView();
+        customCanvasForDraw.resetView();
     }
-
 }

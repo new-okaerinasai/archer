@@ -34,19 +34,19 @@
 
 
         <Button
-            android:id="@+id/colorButton"
-            android:text="Color"
+            android:id="@+id/undoButton"
+            android:layout_width="49dp"
+            android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content" />
-
+            android:text="undo" />
 
         <Button
-            android:id="@+id/undoButton"
-            android:text="undo"
-            android:layout_weight="1"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content" />
+            android:id="@+id/finishButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="0dp"
+            android:text="Button" />
 
     </LinearLayout>
 
@@ -56,6 +56,8 @@
         android:layout_below="@id/topButtonView"
         android:layout_above="@id/resetButton"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        android:layout_height="match_parent">
+
+    </tashariko.com.writetoscreenapp.CustomCanvasForDraw>
 
 </RelativeLayout>

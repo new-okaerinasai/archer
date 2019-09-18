@@ -3,29 +3,26 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-
-    <tashariko.com.writetoscreenapp.CustomDrawView
-        android:id="@+id/mainView"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
-
     <LinearLayout
+        android:id="@+id/mainMenuButtonView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:weightSum="3"
-        android:layout_alignParentBottom="true"
+        android:weightSum="4"
         android:orientation="horizontal">
 
+        <Button
+            android:id="@+id/startButton"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Start" />
 
-        <TextView
-            android:id="@+id/drawScore"
-            android:text="0.0"
-            android:gravity="center"
+        <Button
+            android:id="@+id/exitButton"
+            android:text="Exit"
             android:layout_weight="1"
             android:layout_width="0dp"
             android:layout_height="wrap_content" />
-
     </LinearLayout>
-
 
 </RelativeLayout>
