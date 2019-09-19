@@ -20,14 +20,14 @@
 
         <Button
             android:id="@+id/sizeMinusButton"
-            android:layout_width="0dp"
+            android:layout_width="15dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="A-" />
 
         <Button
             android:id="@+id/sizePlusButton"
-            android:layout_width="2dp"
+            android:layout_width="20dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="A+" />
@@ -35,7 +35,7 @@
 
         <Button
             android:id="@+id/undoButton"
-            android:layout_width="10dp"
+            android:layout_width="50dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="undo" />

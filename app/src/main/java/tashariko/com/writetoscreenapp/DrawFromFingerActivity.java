@@ -14,6 +14,8 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 
 public class DrawFromFingerActivity extends AppCompatActivity {
+    private int chosenColor;
+    private static final int REQUEST_CHANGE_COLOR = -1;
 
     @BindView(R.id.customCanvas)
     CustomCanvasForDraw customCanvasForDraw;
@@ -29,8 +31,6 @@ public class DrawFromFingerActivity extends AppCompatActivity {
 
     @BindView(R.id.finishButton)
     Button finishButton;
-    //@BindView(R.id.colorButton)
-    //Button colorButton;
 
     @BindView(R.id.undoButton)
     Button undoButton;
@@ -45,13 +45,13 @@ public class DrawFromFingerActivity extends AppCompatActivity {
         ButterKnife.bind(this);
         listeners();
         customCanvasForDraw.setDebugMode(true);
+        chosenColor = Color.BLACK;
     }
 
     private void listeners() {
         finishButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                System.out.println("llll");
                 customCanvasForDraw.setScore();
             }
         });
@@ -88,9 +88,14 @@ public class DrawFromFingerActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(DrawFromFingerActivity.this, CustomColorChoosingDialog.class);
-                startActivity(intent);
+                startActivityForResult(intent, REQUEST_CHANGE_COLOR);
             }
         });
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        customCanvasForDraw.setColor(data.getIntExtra("chosenColor", Color.RED));
     }
 
     private void resetView() {

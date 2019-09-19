@@ -85,4 +85,8 @@ public class CustomCanvasForDraw extends RelativeLayout implements CustomDrawVie
     public void end(float x, float y) {
         // endText.setText(String.format("%.02f",x)+", "+ String.format("%.02f",y));
     }
+
+    public void setColor(int color) {
+        customDrawView.setDrawColor(color);
+    }
 }
