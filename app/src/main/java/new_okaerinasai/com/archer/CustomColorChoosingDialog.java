@@ -1,4 +1,4 @@
-package tashariko.com.writetoscreenapp;
+package new_okaerinasai.com.archer;
 
 import android.content.Intent;
 import android.os.Bundle;

@@ -1,4 +1,4 @@
-package tashariko.com.writetoscreenapp;
+package new_okaerinasai.com.archer;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;
@@ -21,6 +21,6 @@ public class ExampleInstrumentedTest {
         // Context of the app under test.
         Context appContext = InstrumentationRegistry.getTargetContext();
 
-        assertEquals("tashariko.com.writetoscreenapp", appContext.getPackageName());
+        assertEquals("new_okaerinasai.com.archer", appContext.getPackageName());
     }
 }

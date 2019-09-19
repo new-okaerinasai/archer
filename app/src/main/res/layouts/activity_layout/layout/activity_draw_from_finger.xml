@@ -56,13 +56,13 @@
     </LinearLayout>
 
 
-    <tashariko.com.writetoscreenapp.CustomCanvasForDraw
+    <new_okaerinasai.com.archer.CustomCanvasForDraw
         android:id="@+id/customCanvas"
         android:layout_below="@id/topButtonView"
         android:layout_above="@id/resetButton"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-    </tashariko.com.writetoscreenapp.CustomCanvasForDraw>
+    </new_okaerinasai.com.archer.CustomCanvasForDraw>
 
 </RelativeLayout>

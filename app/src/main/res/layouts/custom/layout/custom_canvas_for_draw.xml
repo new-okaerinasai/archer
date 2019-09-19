@@ -4,7 +4,7 @@
     android:layout_height="match_parent">
 
 
-    <tashariko.com.writetoscreenapp.CustomDrawView
+    <new_okaerinasai.com.archer.CustomDrawView
         android:id="@+id/mainView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>
