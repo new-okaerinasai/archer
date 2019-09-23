@@ -9,11 +9,13 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name="new_okaerinasai.com.archer.DrawFromFingerActivity">
-
-        </activity>
         <activity
-            android:name="new_okaerinasai.com.archer.MainMenu"
+            android:name=".LessonChooseActivity"
+            android:label="@string/title_activity_lesson_choose"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity android:name=".DrawFromFingerActivity"></activity>
+        <activity
+            android:name=".MainMenu"
             android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -21,8 +23,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        
-        <activity android:name="new_okaerinasai.com.archer.CustomColorChoosingDialog"></activity>
+        <activity android:name=".CustomColorChoosingDialog" />
     </application>
 
 </manifest>

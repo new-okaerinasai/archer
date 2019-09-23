@@ -4,6 +4,8 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
       <module fileurl="file://$PROJECT_DIR$/archer.iml" filepath="$PROJECT_DIR$/archer.iml" />
+      <module fileurl="file://$PROJECT_DIR$/app/archer-app.iml" filepath="$PROJECT_DIR$/app/archer-app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/old_fign-archer.iml" filepath="$PROJECT_DIR$/old_fign-archer.iml" />
     </modules>
   </component>
 </project>

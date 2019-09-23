@@ -50,6 +50,7 @@ public class DrawFromFingerActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 customCanvasForDraw.setScore();
+                customCanvasForDraw.onClickNext();
             }
         });
 

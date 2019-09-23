@@ -89,4 +89,8 @@ public class CustomCanvasForDraw extends RelativeLayout implements CustomDrawVie
     public void setColor(int color) {
         customDrawView.setDrawColor(color);
     }
+
+    public void onClickNext() {
+        customDrawView.onClickNext();
+    }
 }

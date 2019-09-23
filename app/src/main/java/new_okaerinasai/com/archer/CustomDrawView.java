@@ -190,12 +190,17 @@ public class CustomDrawView extends android.support.v7.widget.AppCompatImageView
         union.op(finalPath, intendedPath, Path.Op.UNION);
         float[] intersection_approx = intersection.approximate((float) 0.1);
         float[] union_approx = union.approximate((float) 0.1);*/
-        return (float) 100.01;
+        return (float) 76.2;
     }
 
     public interface GetCoordinateCallback {
         void moving(float x, float y);
         void start(float x, float y);
         void end(float x, float y);
+    }
+    public void onClickNext() {
+        //for (Path pathT : pathPenList) {
+        //    intendedPath.addPath(pathT);
+        // }
     }
 }
