@@ -59,7 +59,6 @@ public class CustomColorChoosingDialog extends AppCompatActivity {
             public void onClick(View v) {
                 color = picker.getColor();
                 Intent data = new Intent();
-                System.out.println("ksksks");
                 data.putExtra("chosenColor", color);
                 setResult(RESULT_OK, data);
                 finish();

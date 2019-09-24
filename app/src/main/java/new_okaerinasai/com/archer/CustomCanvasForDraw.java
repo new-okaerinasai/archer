@@ -54,10 +54,6 @@ public class CustomCanvasForDraw extends RelativeLayout implements CustomDrawVie
         this.isDebugEnabled=isDebugEnabled;
     }
 
-    public void changeColor(int color) {
-        customDrawView.setDrawColor(color);
-    }
-
     public void undoView() {
         customDrawView.undoPath();
     }
@@ -66,6 +62,9 @@ public class CustomCanvasForDraw extends RelativeLayout implements CustomDrawVie
         customDrawView.increaseWidth(decrease);
     }
 
+    public void increaseDim(boolean decrease) {
+        customDrawView.increaseDim(decrease);
+    }
     public void resetView() {
         customDrawView.resetView();
         drawScore.setText("0.0");
@@ -90,7 +89,7 @@ public class CustomCanvasForDraw extends RelativeLayout implements CustomDrawVie
         customDrawView.setDrawColor(color);
     }
 
-    public void onClickNext() {
-        customDrawView.onClickNext();
+    public boolean onClickNext() {
+        return customDrawView.onClickNext();
     }
 }

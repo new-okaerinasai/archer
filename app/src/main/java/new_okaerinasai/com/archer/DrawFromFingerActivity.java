@@ -32,8 +32,11 @@ public class DrawFromFingerActivity extends AppCompatActivity {
     @BindView(R.id.undoButton)
     Button undoButton;
 
-    @BindView(R.id.changeColorButton)
-    Button changeColorButton;
+    @BindView(R.id.dimMinus)
+    Button dimMinus;
+
+    @BindView(R.id.dimPlus)
+    Button dimPlus;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,7 +53,12 @@ public class DrawFromFingerActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 customCanvasForDraw.setScore();
-                customCanvasForDraw.onClickNext();
+                boolean result = customCanvasForDraw.onClickNext();
+                if (result) {
+                    Intent intent = new Intent(DrawFromFingerActivity.this, FinishScreen.class);
+                    intent.putExtra("score", (float) 76.12);
+                    startActivity(intent);
+                }
             }
         });
 
@@ -82,11 +90,17 @@ public class DrawFromFingerActivity extends AppCompatActivity {
             }
         });
 
-        changeColorButton.setOnClickListener(new View.OnClickListener() {
+        dimMinus.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(DrawFromFingerActivity.this, CustomColorChoosingDialog.class);
-                startActivityForResult(intent, REQUEST_CHANGE_COLOR);
+                customCanvasForDraw.increaseDim(true);
+            }
+        });
+
+        dimPlus.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                customCanvasForDraw.increaseDim(false);
             }
         });
     }
