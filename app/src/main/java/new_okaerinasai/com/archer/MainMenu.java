@@ -33,8 +33,9 @@ public class MainMenu extends AppCompatActivity {
         startButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(MainMenu.this, DrawFromFingerActivity.class);
-                startActivity(intent);
+                // Intent intent = new Intent(MainMenu.this, DrawFromFingerActivity.class);
+                Intent intentNow = new Intent(MainMenu.this, ScrollingActivity.class);
+                startActivity(intentNow);
             }
         });
 

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -16,53 +17,83 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:weightSum="5"
-        android:orientation="horizontal">
+        android:orientation="vertical">
+        <LinearLayout
+            android:id="@+id/topButtonView2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:weightSum="5"
+            android:orientation="horizontal">
 
-        <Button
+    <ImageButton
             android:id="@+id/sizeMinusButton"
-            android:layout_width="57dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="0.5"
-            android:text="A-" />
+            android:layout_width="55dp"
+            android:layout_height="50dp"
+            android:layout_weight="1"
+            android:text="A-"
+            android:textSize="5pt"
+            android:background="@null"
+            app:srcCompat="@drawable/aminus"/>
 
-        <Button
+        <ImageButton
             android:id="@+id/sizePlusButton"
-            android:layout_width="56dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="0.5"
-            android:text="A+" />
+            android:layout_width="55dp"
+            android:layout_height="50dp"
+            android:layout_weight="1"
+            android:text="A+"
+            android:textSize="5pt"
+            android:background="@null"
+            app:srcCompat="@drawable/aplus"/>
 
 
-        <Button
+        <ImageButton
             android:id="@+id/undoButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="55dp"
+            android:layout_height="50dp"
             android:layout_weight="1"
-            android:text="undo" />
+            android:text="undo"
+            android:textSize="5pt"
+            android:background="@null"
+            app:srcCompat="@drawable/undi"
+            />
+        </LinearLayout>
 
-        <Button
+        <LinearLayout
+            android:id="@+id/topButtonView1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:weightSum="5"
+            android:orientation="horizontal">
+        <ImageButton
             android:id="@+id/finishButton"
-            android:layout_width="65dp"
-            android:layout_height="wrap_content"
+            android:layout_width="55dp"
+            android:layout_height="45dp"
             android:layout_marginTop="0dp"
-            android:text="Next" />
+            android:layout_weight="1"
+            android:text="Next"
+            android:textSize="5pt"
+            android:background="@null"
+            app:srcCompat="@drawable/next" />
 
-        <Button
+        <ImageButton
             android:id="@+id/dimPlus"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="55dp"
+            android:layout_height="45dp"
             android:layout_marginTop="0dp"
             android:layout_weight="1"
-            android:text="dim+" />
+            android:text="dim+"
+            android:background="@null"
+            app:srcCompat="@drawable/dim_minus"/>
 
-        <Button
+        <ImageButton
             android:id="@+id/dimMinus"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="0dp"
+            android:layout_width="55dp"
+            android:layout_height="45dp"
             android:layout_weight="1"
-            android:text="dim-" />
-
+            android:text="dim-"
+            android:background="@null"
+            app:srcCompat="@drawable/dim_plus"/>
+        </LinearLayout>
     </LinearLayout>
 
 

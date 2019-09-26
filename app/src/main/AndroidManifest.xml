@@ -10,7 +10,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".FinishScreen"></activity>
-        <activity android:name=".DrawFromFingerActivity" />
+        <activity android:name=".DrawFromFingerActivity"
+            android:finishOnTaskLaunch="true"/>
         <activity
             android:name=".MainMenu"
             android:screenOrientation="portrait">
@@ -20,7 +21,11 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".CustomColorChoosingDialog" />
+        <activity
+            android:name=".CustomColorChoosingDialog" />
+
+        <activity android:name=".ScrollingActivity">
+        </activity>
     </application>
 
 </manifest>

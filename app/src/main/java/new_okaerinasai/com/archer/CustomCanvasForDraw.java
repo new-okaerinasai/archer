@@ -32,7 +32,6 @@ public class CustomCanvasForDraw extends RelativeLayout implements CustomDrawVie
         customDrawView = (CustomDrawView) findViewById(R.id.mainView);
 
         drawScore = (TextView) findViewById(R.id.drawScore);
-        System.out.println("llllssl");
         if (isDebugEnabled) {
             drawScore.setVisibility(VISIBLE);
         } else {

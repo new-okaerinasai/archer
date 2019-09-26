@@ -1,7 +1,8 @@
 package new_okaerinasai.com.archer;
 
 import android.content.Context;
-import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
@@ -12,10 +13,8 @@ import android.util.Log;
 import android.view.MotionEvent;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class CustomDrawView extends android.support.v7.widget.AppCompatImageView {
-
     private static final int STATE_STILL = 0;
     private static final int STATE_MOVING = 1;
     private static int DEFAULT_COLOR;
@@ -37,14 +36,19 @@ public class CustomDrawView extends android.support.v7.widget.AppCompatImageView
 
     private int now = 0;
 
+    private Canvas savedCanvasDone;
+
+    private Bitmap bitmapLesson;
+    private Bitmap bitmapDone;
+
     public CustomDrawView(Context context, @Nullable AttributeSet attrs) {
         super(context, attrs);
         init();
     }
 
     private void init() {
-        DEFAULT_COLOR = Color.BLACK; //ContextCompat.getColor(getContext(), R.color.colorAccent);
-        currentColor = Color.BLACK;
+        DEFAULT_COLOR = Color.GREEN; //ContextCompat.getColor(getContext(), R.color.colorAccent);
+        currentColor = Color.GREEN;
         initPaintNPen(currentColor);
         finalPath = new Path();
         Path intendedPath1 = new Path();
@@ -52,22 +56,28 @@ public class CustomDrawView extends android.support.v7.widget.AppCompatImageView
         Path intendedPath3 = new Path();
         Path intendedPath4 = new Path();
 
-        intendedPath1.addCircle(400, 400, 400, Path.Direction.CW);
-        intendedPathList.add(intendedPath1);
+        //intendedPath1.addCircle(400, 400, 400, Path.Direction.CW);
+        //intendedPathList.add(intendedPath1);
 
-        intendedPath2.addRect(200, 300, 500, 400, Path.Direction.CW);
-        intendedPathList.add(intendedPath2);
+        //intendedPath2.addRect(200, 300, 500, 400, Path.Direction.CW);
+        //intendedPathList.add(intendedPath2);
 
-        intendedPath3.addRect(240, 340, 540, 440, Path.Direction.CW);
-        intendedPathList.add(intendedPath3);
+        //intendedPath3.addRect(240, 340, 540, 440, Path.Direction.CW);
+        //intendedPathList.add(intendedPath3);
 
-        intendedPath4.addRect(320, 320, 560, 460, Path.Direction.CW);
-        intendedPathList.add(intendedPath4);
+        //intendedPath4.addRect(320, 320, 560, 460, Path.Direction.CW);
+        //intendedPathList.add(intendedPath4);
+
+        bitmapLesson = BitmapFactory.decodeResource(getContext().getResources(), R.drawable.lesson1);
+        bitmapDone = Bitmap.createBitmap(bitmapLesson.getWidth(), bitmapLesson.getHeight(), Bitmap.Config.RGB_565);
 
         intendedPaint = new Paint();
         intendedPaint.setColor(Color.RED);
         intendedPaint.setStyle(Paint.Style.STROKE);
         intendedPaint.setStrokeWidth(20);
+
+        savedCanvasDone = new Canvas();
+        savedCanvasDone.setBitmap(bitmapDone);
     }
 
     private void initPaintNPen(int color) {
@@ -105,7 +115,7 @@ public class CustomDrawView extends android.support.v7.widget.AppCompatImageView
     }
 
     @Override
-    public boolean onTouchEvent( MotionEvent event) {
+    public boolean onTouchEvent(MotionEvent event) {
         float x=event.getX();
         float y=event.getY();
         Log.i("CO-ordinate",event.getX()+" : "+event.getY());
@@ -115,7 +125,7 @@ public class CustomDrawView extends android.support.v7.widget.AppCompatImageView
             startPath(x,y);
         } else if (event.getAction() == MotionEvent.ACTION_MOVE) {
             callbackForCoordinate.moving(x,y);
-            updatePath(x,y);
+            updatePath(x,y); 
         } else if (event.getAction()== MotionEvent.ACTION_UP) {
             callbackForCoordinate.end(x,y);
             endPath(x,y);
@@ -145,14 +155,16 @@ public class CustomDrawView extends android.support.v7.widget.AppCompatImageView
     @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
+        canvas.drawBitmap(bitmapLesson, 10, 10, intendedPaint);
         for (int i = 0; i < paintPenList.size(); i++) {
             canvas.drawPath(pathPenList.get(i), paintPenList.get(i));
+            savedCanvasDone.drawPath(pathPenList.get(i), paintPenList.get(i));
             finalPath.addPath(pathPenList.get(i));
         }
-
-        for (int i = 0; i <= now; ++i) {
+        /*for (int i = 0; i <= now; ++i) {
             canvas.drawPath(intendedPathList.get(i), intendedPaint);
-        }
+            savedCanvas.drawPath(intendedPathList.get(i), intendedPaint);
+        }*/
     }
 
     public void increaseWidth(boolean decrease) {
@@ -171,15 +183,15 @@ public class CustomDrawView extends android.support.v7.widget.AppCompatImageView
 
     public void increaseDim(boolean decrease) {
         if (decrease) {
-            currentColor = changeAlpha(currentColor);
+            currentColor = changeAlpha(currentColor, (float) 0.5);
         } else {
-            currentColor = changeAlpha(currentColor);
+            currentColor = changeAlpha(currentColor, (float) 1.6);
         }
         invalidate();
     }
 
-    public int changeAlpha(int color) {
-        int alpha = Math.round(Color.alpha(color) * (float) 0.5);
+    public int changeAlpha(int color, float scale) {
+        int alpha = Math.round(Color.alpha(color) * scale);
         int red = Color.red(color);
         int green = Color.green(color);
         int blue = Color.blue(color);
@@ -199,7 +211,7 @@ public class CustomDrawView extends android.support.v7.widget.AppCompatImageView
         finalPath.reset();
         lineWidth = 20;
 
-        initPaintNPen(Color.BLACK);
+        initPaintNPen(Color.GREEN);
 
         now = 0;
 
@@ -224,19 +236,37 @@ public class CustomDrawView extends android.support.v7.widget.AppCompatImageView
     }
 
     float getScore() {
-        Path intersection = new Path();
-        Path union = new Path();
-        /*
-        intersection.op(finalPath, intendedPath, Path.Op.INTERSECT);
-        union.op(finalPath, intendedPath, Path.Op.UNION);
-        float[] intersection_approx = intersection.approximate((float) 0.1);
-        float[] union_approx = union.approximate((float) 0.1);*/
-        return (float) 76.2;
+        int intersection = 0;
+        int union = 0;
+        boolean kek = false;
+        int bgcolor = bitmapLesson.getPixel(0, 0);
+        int bgcolorDrawn = bitmapDone.getPixel(0, 0);
+        for (int i = 0; i < bitmapLesson.getWidth(); ++i) {
+            for (int j = 0; j < bitmapLesson.getHeight(); ++j) {
+                int colorDone = bitmapLesson.getPixel(i, j);
+                int colorDrawn = bitmapDone.getPixel(i, j);
+                if (colorDone != bgcolor && colorDrawn != bgcolorDrawn) {
+                    intersection += 1;
+                    union += 1;
+                } else if ((colorDone != bgcolor && colorDrawn == bgcolorDrawn) ||
+                        (colorDone == bgcolor && colorDrawn == currentColor)) {
+                    union += 1;
+                }
+            }
+        } /*
+        if (kek) {
+            return (float) 0.2;
+        } else {
+            return  (float) 0.1;
+        }*/
+        return (float) intersection / union;
     }
 
     public interface GetCoordinateCallback {
         void moving(float x, float y);
+
         void start(float x, float y);
+
         void end(float x, float y);
     }
     public boolean onClickNext() {
@@ -247,8 +277,5 @@ public class CustomDrawView extends android.support.v7.widget.AppCompatImageView
         } else {
             return true;
         }
-        //for (Path pathT : pathPenList) {
-        //    intendedPath.addPath(pathT);
-        // }
     }
 }

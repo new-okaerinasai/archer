@@ -22,10 +22,11 @@ public class FinishScreen extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_finish_screen);
         ButterKnife.bind(this);
+        returnButton.setText("Return.");
         Intent intent = getIntent();
         float score = intent.getFloatExtra("score", (float) 228.01);
         TextView textView = (TextView) findViewById(R.id.congratsWithScore);
-        textView.setText(String.format("Congrats %.2f", score));
+        textView.setText(String.format("Congrats! \n Your score for this lesson is \n %.2f", score));
         returnButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

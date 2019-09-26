@@ -2,10 +2,12 @@ package new_okaerinasai.com.archer;
 
 import android.content.Intent;
 import android.graphics.Color;
+import android.media.Image;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -21,22 +23,22 @@ public class DrawFromFingerActivity extends AppCompatActivity {
     Button resetButton;
 
     @BindView(R.id.sizeMinusButton)
-    Button sizeMinusButton;
+    ImageButton sizeMinusButton;
 
     @BindView(R.id.sizePlusButton)
-    Button sizePlusButton;
+    ImageButton sizePlusButton;
 
     @BindView(R.id.finishButton)
-    Button finishButton;
+    ImageButton finishButton;
 
     @BindView(R.id.undoButton)
-    Button undoButton;
+    ImageButton undoButton;
 
     @BindView(R.id.dimMinus)
-    Button dimMinus;
+    ImageButton dimMinus;
 
     @BindView(R.id.dimPlus)
-    Button dimPlus;
+    ImageButton dimPlus;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,8 +58,9 @@ public class DrawFromFingerActivity extends AppCompatActivity {
                 boolean result = customCanvasForDraw.onClickNext();
                 if (result) {
                     Intent intent = new Intent(DrawFromFingerActivity.this, FinishScreen.class);
-                    intent.putExtra("score", (float) 76.12);
+                    intent.putExtra("score", (float)customCanvasForDraw.getScore() * 100);
                     startActivity(intent);
+                    finish();
                 }
             }
         });
